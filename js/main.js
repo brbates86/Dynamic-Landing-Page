@@ -52,6 +52,44 @@ function setBgGreet() {
     }
 }
 
+
+// Get name 
+function getName() {
+    if(localStorage.getItem('name') === null) {
+        name.textContent = '[Enter Name]'; 
+    } else {
+        name.textContent = localStorage.getItem('name'); 
+    }
+}
+
+// SET name
+function setName(e) {
+    if(e.type === 'keypress') {
+        if(e.which == 13 || e.keyCode == 13) {
+            localStorage.setItem('name', e.target.innerText);
+            name.blur();
+        }
+    } else {
+        localStorage.setItem('name', e.target.innerText);
+    }
+}
+
+// Get focus  
+function getFocus() {
+    if(localStorage.getItem('focus') === null) {
+        focus.textContent = '[Enter Focus]'; 
+    } else {
+        focus.textContent = localStorage.getItem('focus'); 
+    }
+}
+
+name.addEventListener('keypress', setName);
+name.addEventListener('blur', setName);
+
+
 // Run
 
 showTime();
+setBgGreet();
+getName();
+getFocus();
